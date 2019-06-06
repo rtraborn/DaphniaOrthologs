@@ -1,10 +1,16 @@
 #!/bin/bash
 
-orthoWD=/scratch/rtraborn/archive/Ppa_orthomcl
-blastOut=blastp_goodProteins_e2_DpDo.tab
+#PBS -N orthomcl_analysis
+#PBS -l nodes=1:ppn=16,vmem=48gb
+#PBS -l walltime=1:00:00
+#PBS -q debug
+
+mcl=/N/u/rtraborn/Carbonate/genome_analysis/mcl/bin/mcl
+orthoWD=/N/dc2/scratch/rtraborn/Obtusa_orthologs/obtusa_blast
+blastOut=D_pul_vs_D_obt_blastout.txt
 similarSeq=DpDo_e2_out.bpo
 fastaDir=blastp_e2
-configFile=orthomcl.config
+configFile=/N/u/rtraborn/Carbonate/scratch/Obtusa_orthologs/DaphniaOrthologs/config/orthomcl.config
 
 cd $orthoWD
 
@@ -30,7 +36,7 @@ orthomclDumpPairsFiles $configFile
 
 echo "Running mcl for clustering"
 
-mcl mclInput --abc -I 2.0 -analyze y -o mclOutput_e2.out
+$mcl mclInput --abc -I 2.0 -analyze y -o mclOutput_e2.out
 
 echo "Converting the MCL clusters into OrthoMCL groups"
 
