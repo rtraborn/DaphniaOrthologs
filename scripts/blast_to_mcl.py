@@ -1,4 +1,4 @@
-python=/N/soft/rhel7/python/2.7.16/bin/python
+#!/N/soft/rhel7/python/2.7.16/bin/python
 
 """
 input: concatenat all the raw all-by-all blast results into one file
