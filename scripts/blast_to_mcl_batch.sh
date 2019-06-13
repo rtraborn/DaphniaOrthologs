@@ -18,9 +18,7 @@ echo "Processing blast output for analysis by mcl."
 
 #$ScriptDir/blast_to_mcl.py $blastRaw 0.5
 
-mcl $outputName --abc -te 5 -tf 'gq(5)' -I 1.4 -o hit-frac0.4_I1.4_e5
-mcl $outputName --abc -te 5 -tf 'gq(5)' -I 2 -o hit-frac0.4_I2_e5
-mcl $outputName --abc -te 5 -tf 'gq(5)' -I 1.4 -o hit-frac0.3_I1.4_e5
-mcl $outputName --abc -te 5 -tf 'gq(5)' -I 2 -o hit-frac0.3_I2_e5
+mcl $outputName --abc -te 5 -tf 'gq(5)' -I 1.4 -o hit-frac0.5_I1.4_e5
+mcl $outputName --abc -te 5 -tf 'gq(5)' -I 2 -o hit-frac0.5_I2_e5
 
 echo "Job Complete!"
