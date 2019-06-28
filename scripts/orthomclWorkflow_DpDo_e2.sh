@@ -5,11 +5,12 @@
 #PBS -l walltime=1:00:00
 #PBS -q debug
 
+perl=/usr/bin/perl
 mcl=/N/u/rtraborn/Carbonate/genome_analysis/mcl/bin/mcl
 orthoWD=/N/dc2/scratch/rtraborn/Obtusa_orthologs/obtusa_blast
-blastOut=D_pul_vs_D_obt_blastout.txt
+blastOut=D_pul_vs_D_obt_blastout_new2.txt
 similarSeq=DpDo_e2_out.bpo
-fastaDir=blastp_e2
+fastaDir=blastp_file
 configFile=/N/u/rtraborn/Carbonate/scratch/Obtusa_orthologs/DaphniaOrthologs/config/orthomcl.config
 scriptsDir=/N/u/rtraborn/Carbonate/scratch/Obtusa_orthologs/DaphniaOrthologs/scripts
 
@@ -17,15 +18,15 @@ cd $orthoWD
 
 echo "Starting the workflow"
 
-orthomclInstallSchema $configFile
+#orthomclInstallSchema $configFile
 
 echo "Parsing the BLAST output with orthocmcl"
 
-orthomclBlastParser $blastOut $fastaDir > $similarSeq
+#orthomclBlastParser $blastOut $fastaDir > $similarSeq
 
 echo "Loading the BLAST data into the orthmcl database on RDC"
 
-orthomclLoadBlast $configFile $similarSeq
+perl ~/genome_analysis/orthomclSoftware-v2.0.9/bin/orthomclLoadBlast $configFile $similarSeq
 
 echo "Computing the pairs on the orthmcl database on RDC"
 
